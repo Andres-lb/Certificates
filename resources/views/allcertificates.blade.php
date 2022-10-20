@@ -7,29 +7,48 @@
     <head>
       
         
-        <title>Certificates</title>
+        
     </head>
 
 
 <table class="table table-hover ">
   <thead class="bg-info">
-    <head><strong>Certificates</strong></head>
+    
     <tr>
       
       <th >Certification name</th>
-      <th >Published</th>
+      <th class="d-flex justify-content-center">Published</th>
       <th ></th>
       <th ></th>
     </tr>
   </thead>
   <tbody>
+    
   @foreach ($certificates as $certificate)
     <tr>
       
-      <td>{{$certificate->name}}</td>
-      <td>{{$certificate->switch}}</td>
-      <td><a href="/allusers/{{$certificate->id}}" class="btn btn-info btn-md " >Edit</a></td>
-      <td><a href="/allusers/{{$certificate->id}}" class="btn btn-info btn-md " >Delete</a></td>
+      <td ><figure class="">
+  <blockquote class="blockquote">
+    <p>{{$certificate->name}}</p>
+  </blockquote>
+  
+
+      @if($certificate->select == 1)<figcaption class="blockquote-footer">
+      {{$certificate->fees}}
+  </figcaption>
+  </figure>
+  
+      </td>
+      @endif
+
+      <td>@if($certificate->switch == 1)
+       <span class="d-flex justify-content-center"><i class="fas fa-check-circle " style="color:green" ></i></span>
+@else
+    <span class="d-flex justify-content-center"><i class="fas fa-check-circle " style="color:gray" ></i></span>
+
+@endif</td>
+      <td><a href="/edituser" class="btn btn-info btn-md " ><i class="fas fa-pencil-alt"></i>Edit</a></td>
+      <td><a href="/deleteuser" class="btn btn-info btn-md " ><i class="far fa-trash-alt"></i>Delete</a></td>
     </tr>
     @endforeach
   </tbody>

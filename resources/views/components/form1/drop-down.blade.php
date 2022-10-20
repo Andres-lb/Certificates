@@ -57,7 +57,7 @@
                   <label class="form-label m-2 dd3" for="fees" id="dd3" required> CIM registration fees</label>
                   <div class="form-outline flex-fill mb-0">
                   <input type="number" id="fees" name="fees" value=" CIM registration fees" class="form-control dd2" />
-                  error(fees)
+                  @error('fees')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

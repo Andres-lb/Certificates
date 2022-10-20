@@ -25,7 +25,10 @@ class RegisterController extends Controller
         $attributes['name']=ucwords($attributes['name']);
         
         if($attributes['select']==1) {
-            $attributes = request()->validate(['fees'=>'required|float|min:4']);
+            $attributes = request()->validate(['name' =>['required','string'],
+            'description' => ['required','string'],
+            'switch' => 'boolean',
+            'select' => ['required','string'],'fees'=>'required|min:4']);
         }
          else {
             unset($attributes['fees']);
