@@ -23,4 +23,6 @@ Route::get('/certificate', function () {
 
 Route::get('/register', [RegisterController::class,'create']);
 Route::post('/register', [RegisterController::class,'store']);
+Route::get('/allcertificates', [RegisterController::class,'allcertificate']);
+
 Route::patch('/update',[RegisterController::class,'update']);

@@ -54,9 +54,13 @@
 
 
                   <div class="align-items-center mb-4 dd1" id="dd1">
-                  <label class="form-label m-2 dd3" for="fees" id="dd3"> CIM registration fees</label>
+                  <label class="form-label m-2 dd3" for="fees" id="dd3" required> CIM registration fees</label>
                   <div class="form-outline flex-fill mb-0">
                   <input type="number" id="fees" name="fees" value=" CIM registration fees" class="form-control dd2" />
-
+                  error(fees)
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                    </div>
                    </div>

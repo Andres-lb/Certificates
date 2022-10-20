@@ -21,6 +21,15 @@ class RegisterController extends Controller
             'select' => ['required','string'],
             'fees' => ['']
         ]);
+        
+        $attributes['name']=ucwords($attributes['name']);
+        
+        if($attributes['select']==1) {
+            $attributes = request()->validate(['fees'=>'required|float|min:4']);
+        }
+         else {
+            unset($attributes['fees']);
+         };   
 
         Certificate::create($attributes);
         return redirect('/');
@@ -38,8 +47,8 @@ class RegisterController extends Controller
         ]);
         $attributes['name']=ucwords($attributes['name']);
         
-    if($attributes['fees'] == 1) {
-        $attributes = request()->validate(['fees'=>'required|float']);
+    if($attributes['select']==1) {
+        $attributes = request()->validate(['fees'=>'required|float|min:4']);
     }
      else {
         unset($attributes['fees']);
@@ -65,7 +74,7 @@ class RegisterController extends Controller
 
         public function allcertificate()
         { 
-            return view('Certificates', [
+            return view('allcertificates', [
                'certificates' => Certificate::orderBy('name')->get()
                
             
