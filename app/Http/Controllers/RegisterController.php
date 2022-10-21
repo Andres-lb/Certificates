@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
 
     
-    public function update(){
+    public function update(Certificate $certificate){
       $attributes = request()->validate([
             'name' =>['required','string'],
             'description' => ['required','string'],
@@ -50,20 +50,24 @@ class RegisterController extends Controller
         ]);
         $attributes['name']=ucwords($attributes['name']);
         
-    if($attributes['select']==1) {
-        $attributes = request()->validate(['fees'=>'required|float|min:4']);
-    }
+        if($attributes['select']==1) {
+            $attributes = request()->validate(['name' =>['required','string'],
+            'description' => ['required','string'],
+            'switch' => 'boolean',
+            'select' => ['required','string'],
+            'fees'=>'required|min:4']);
+        }
      else {
         unset($attributes['fees']);
      };   
     
     
     
+     
     
+          $certificate->updateOrFail($attributes);
     
-         $certificate->updateOrFail($attributes);
-    
-        return view ('/update');
+        return redirect('/allcertificates');
 
     }
 
@@ -86,6 +90,14 @@ class RegisterController extends Controller
         }
 
 
+        public function destroy(Certificate $certificate)
+        { 
+            $certificate->delete();
+               
+            return back()->with('success','Certificate Deleted');
+    
+            
+        }
 
 
 
@@ -93,9 +105,11 @@ class RegisterController extends Controller
 
         public function find(Certificate $certificate)
     { 
-        return view('allCertificates', [
-            'Certificate' => Certificate::find($certificate->id)
+        return view('edit', [
+            'certificate' => Certificate::find($certificate->id)
         ]);
     
     }
+
+
 }

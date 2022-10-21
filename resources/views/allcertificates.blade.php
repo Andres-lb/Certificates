@@ -33,7 +33,7 @@
   </blockquote>
   
 
-      @if($certificate->select == 1)<figcaption class="blockquote-footer">
+      @if(isset($certificate->fees))<figcaption class="blockquote-footer">
       {{$certificate->fees}}
   </figcaption>
   </figure>
@@ -47,8 +47,12 @@
     <span class="d-flex justify-content-center"><i class="fas fa-check-circle " style="color:gray" ></i></span>
 
 @endif</td>
-      <td><a href="/edituser" class="btn btn-info btn-md " ><i class="fas fa-pencil-alt"></i>Edit</a></td>
-      <td><a href="/deleteuser" class="btn btn-info btn-md " ><i class="far fa-trash-alt"></i>Delete</a></td>
+      <td><a href="/allcertificates/{{$certificate->id}}" class="btn btn-info btn-md " ><i class="fas fa-pencil-alt"></i>Edit</a></td>
+      
+      <td><form method="POST" action="/allcertificates/{{$certificate->id}}">
+        @csrf
+        @method('DELETE')<button class="btn btn-info btn-md " ><i class="far fa-trash-alt"></i>Delete</button></form></td>
+
     </tr>
     @endforeach
   </tbody>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Models\Certificate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,12 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/certificate', function () {
-    return view('certificate');
-});
 
-Route::get('/register', [RegisterController::class,'create']);
-Route::post('/register', [RegisterController::class,'store']);
-Route::get('/allcertificates', [RegisterController::class,'allcertificate']);
+Route::get('register', [RegisterController::class,'create']);
+Route::post('register', [RegisterController::class,'store']);
+Route::get('allcertificates', [RegisterController::class,'allcertificate']);
+Route::get('allcertificates/{certificate}',[RegisterController::class,'find']);
 
-Route::patch('/update',[RegisterController::class,'update']);
+Route::patch('allcertificates/{certificate}',[RegisterController::class,'update']);
+Route::delete('allcertificates/{certificate}',[RegisterController::class,'destroy']);
