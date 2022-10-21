@@ -42,7 +42,7 @@
 
                   <!-- Certification Awarding body//required -->
                   
-                    <x-form1.edit-dropdown current="{{$certificate->select}}" value="{{$certificate->fees}}" />
+                    <x-form1.edit-dropdown current="{{$certificate->select}}" value="{{$certificate->fees}}" old="{{  old('select') }}"  />
 
 
                  

@@ -22,13 +22,14 @@ class RegisterController extends Controller
             'fees' => ['']
         ]);
         
-        $attributes['name']=ucwords($attributes['name']);
+        $attributes['name']=ucfirst($attributes['name']);
         
         if($attributes['select']==1) {
             $attributes = request()->validate(['name' =>['required','string'],
             'description' => ['required','string'],
             'switch' => 'boolean',
-            'select' => ['required','string'],'fees'=>'required|min:4']);
+            'select' => ['required','string'],
+            'fees'=>'required|min:4']);
         }
          else {
             unset($attributes['fees']);
@@ -48,7 +49,7 @@ class RegisterController extends Controller
             'select' => ['required','string'],
             'fees' => ['']
         ]);
-        $attributes['name']=ucwords($attributes['name']);
+       
         
         if($attributes['select']==1) {
             $attributes = request()->validate(['name' =>['required','string'],
@@ -58,10 +59,11 @@ class RegisterController extends Controller
             'fees'=>'required|min:4']);
         }
      else {
-        unset($attributes['fees']);
+        $attributes['fees'] = NULL;
+
      };   
     
-    
+     $attributes['name']=ucfirst($attributes['name']);
     
      
     
