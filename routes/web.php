@@ -25,4 +25,4 @@ Route::get('allcertificates', [RegisterController::class,'allcertificate']);
 Route::get('allcertificates/{certificate}',[RegisterController::class,'find']);
 
 Route::patch('allcertificates/{certificate}',[RegisterController::class,'update']);
-Route::delete('allcertificates/{certificate}',[RegisterController::class,'destroy']);
+Route::delete('allcertificates',[RegisterController::class,'destroy']);

@@ -36,7 +36,10 @@ class RegisterController extends Controller
          };   
 
         Certificate::create($attributes);
-        return redirect('/');
+
+        session()->flash('success','Your certificate has been created.');
+
+        return redirect('/allcertificates');
     }
 
 
@@ -92,12 +95,13 @@ class RegisterController extends Controller
         }
 
 
-        public function destroy(Certificate $certificate)
+        public function destroy(Request $request)
         { 
+            $certificate = Certificate::find($request->certificate_delete_id);
             $certificate->delete();
                
-            return back()->with('success','Certificate Deleted');
-    
+            
+            return redirect('/allcertificates');
             
         }
 
