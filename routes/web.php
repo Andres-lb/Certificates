@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CertificateController;
+
 use App\Models\Certificate;
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('register', [RegisterController::class,'create']);
-Route::post('register', [RegisterController::class,'store']);
-Route::get('allcertificates', [RegisterController::class,'allcertificate']);
-Route::get('allcertificates/{certificate}',[RegisterController::class,'find']);
+// Route::get('register', [RegisterController::class,'create']);
+// Route::post('register', [RegisterController::class,'store']);
+// Route::get('allcertificates', [RegisterController::class,'allcertificate']);
+// Route::get('allcertificates/{certificate}',[RegisterController::class,'find']);
 
-Route::patch('allcertificates/{certificate}',[RegisterController::class,'update']);
-Route::delete('allcertificates',[RegisterController::class,'destroy']);
+// Route::patch('allcertificates/{certificate}',[RegisterController::class,'update']);
+// Route::delete('allcertificates',[RegisterController::class,'destroy']);
+Route::resource('certificates', CertificateController::class);

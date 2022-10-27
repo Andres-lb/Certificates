@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->boolean('switch');
-            $table->string('select');
-            $table->float('fees')->nullable();
+            $table->boolean('Is_published');
+            $table->string('awarding');
+            $table->decimal('fees')->nullable();
             $table->timestamps();
         });
     }

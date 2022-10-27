@@ -1,8 +1,6 @@
 @extends('layouts.app')
-<head>
-         <title>Add Certification</title>
-         </head>
 
+<title>@yield('page_title','Edit Certification')</title>
 
 @section('content')
 
@@ -18,13 +16,13 @@
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Certification</p>
 
-                <form class="mx-1 mx-md-4" method="POST" action="/allcertificates/{{$certificate->id}}" >
+                <form class="mx-1 mx-md-4" method="POST" action="{{ route('certificates.update',$certificate->id) }}" >
                 @csrf
                 @method('PATCH')
 
                 <!-- Certification name //required -->
                   <div class="align-items-center mb-4">
-                    <x-form1.text label="Certification name" type="text" value="{{$certificate->name}}" name="name" class="form-control" required/>
+                    <x-form1.text label="Certification name *" type="text" value="{{$certificate->name}}" name="name" class="form-control" required/>
                   </div>
 
 
@@ -35,22 +33,25 @@
 
                   <div class="align-items-center mb-4">
                   
-                    <x-form1.text-area label="Certification short description" name="description" content="{{$certificate->description}}" class="form-control" required />
+                    <x-form1.text-area label="Certification short description *" name="description" content="{{$certificate->description}}" class="form-control" required />
                   </div>
 
 
 
                   <!-- Certification Awarding body//required -->
                   
-                    <x-form1.edit-dropdown current="{{$certificate->select}}" value="{{$certificate->fees}}" old="{{  old('select') }}"  />
+                  <x-form1.drop-down current="{{ $certificate->awarding }}" label="Certification awarding body *" />
 
+
+                   <!-- cim fees -->
+                   <x-form1.cim label="CIM registration fees *" value="{{$certificate->fees}}" />
 
                  
                   
                   <!-- is published -->
                    
                   <div class="align-items-center mb-4">
-                  <x-form1.switch label="Is Published" name="switch" value="{{$certificate->switch}}"   />
+                  <x-form1.switch label="Is Published" name="Is_published" value="{{$certificate->Is_published}}"   />
                   </div>
 
 
