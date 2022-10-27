@@ -22,7 +22,7 @@
 
                 <!-- Certification name //required -->
                   <div class="align-items-center mb-4">
-                    <x-form1.text label="Certification name *" type="text" value="{{$certificate->name}}" name="name" class="form-control" required/>
+                    <x-form1.text label="Certification name *" type="text" value="{{ old('name',$certificate->name) }}" name="name" class="form-control" required/>
                   </div>
 
 
@@ -33,25 +33,25 @@
 
                   <div class="align-items-center mb-4">
                   
-                    <x-form1.text-area label="Certification short description *" name="description" content="{{$certificate->description}}" class="form-control" required />
+                    <x-form1.text-area label="Certification short description *" name="description" content="{{ old('description',$certificate->description) }}" class="form-control" required />
                   </div>
 
 
 
                   <!-- Certification Awarding body//required -->
                   
-                  <x-form1.drop-down current="{{ $certificate->awarding }}" label="Certification awarding body *" />
+                  <x-form1.drop-down current="{{ old('awarding',$certificate->awarding) }}" label="Certification awarding body *" />
 
 
                    <!-- cim fees -->
-                   <x-form1.cim label="CIM registration fees *" value="{{$certificate->fees}}" />
+                   <x-form1.cim label="CIM registration fees *" value="{{ old('fees',$certificate->fees) }}" />
 
                  
                   
                   <!-- is published -->
                    
                   <div class="align-items-center mb-4">
-                  <x-form1.switch label="Is Published" name="Is_published" value="{{$certificate->Is_published}}"   />
+                  <x-form1.switch label="Is Published" name="Is_published" value="{{ old('Is_published',$certificate->Is_published) }}"   />
                   </div>
 
 
